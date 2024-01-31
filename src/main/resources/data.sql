@@ -5,6 +5,9 @@ INSERT INTO ride (date, distance, type) VALUES ({ts '2023-11-25 00:00:00.00'}, 6
 INSERT INTO ride (date, distance, type) VALUES ({ts '2023-11-26 00:00:00.00'}, 79, 1);
 INSERT INTO ride (date, distance, type) VALUES ({ts '2023-11-27 00:00:00.00'}, 45, 1);
 
-INSERT INTO income (date, sum) VALUES ({ts '2023-11-25 00:00:00.00'}, 710.78);
-INSERT INTO income (date, sum) VALUES ({ts '2023-11-26 00:00:00.00'}, 925.97);
-INSERT INTO income (date, sum) VALUES ({ts '2023-11-27 00:00:00.00'}, 564.05);
+INSERT INTO income (date, sum, type)
+VALUES ({ts '2023-11-25 00:00:00.00'}, 710.78, 0);
+INSERT INTO income (date, sum, type)
+VALUES ({ts '2023-11-26 00:00:00.00'}, 925.97, 0);
+INSERT INTO income (date, sum, type)
+VALUES ({ts '2023-11-27 00:00:00.00'}, 564.05, 0);
