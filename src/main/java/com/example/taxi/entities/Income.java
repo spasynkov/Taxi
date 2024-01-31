@@ -16,4 +16,5 @@ public class Income {
 	private Long id;
 	private Date date;
 	private float sum;
+	private IncomeType type;
 }
