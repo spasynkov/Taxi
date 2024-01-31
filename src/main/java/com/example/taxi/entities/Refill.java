@@ -15,7 +15,7 @@ public class Refill {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Date date;
-	private Byte liters;
+	private Float liters;
 	private Float price;
 	private Float discount;
 }
