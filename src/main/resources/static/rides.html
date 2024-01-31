@@ -36,7 +36,7 @@
         let div = document.getElementById(rideType);
         let date = div.getElementsByName("date")[0].value;
         let distance = div.getElementsByName("distance")[0].value;
-        let type = rideType.charAt(0).toUpperCase() + rideType.slice(1);
+        let type = rideType.toUpperCase();
 
         sendApiRequest(date, distance, type);
     }
