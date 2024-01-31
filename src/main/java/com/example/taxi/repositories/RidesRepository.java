@@ -3,8 +3,8 @@ package com.example.taxi.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.taxi.entities.Distance;
+import com.example.taxi.entities.Ride;
 
 @Repository
-public interface DistanceRepository extends CrudRepository<Distance, Long> {
+public interface RidesRepository extends CrudRepository<Ride, Long> {
 }

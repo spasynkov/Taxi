@@ -12,13 +12,14 @@
             local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
             return local.toJSON().slice(0,10);
         });
-        document.getElementsByName("date")[0].value = new Date().toDateInputValue();
+        document.getElementsByName("date")
+            .forEach(date => date.value = new Date().toDateInputValue());
     }
 
 
-    function sendApiRequest(date, distance) {
+    function sendApiRequest(date, distance, type) {
         let xhr = new XMLHttpRequest();
-        let url = "/api/distance/";
+        let url = "/api/rides/";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
@@ -27,27 +28,29 @@
                 console.log(json);
             }
         };
-        var data = JSON.stringify({"id": null, "date": date, "distance": distance});
+        var data = JSON.stringify({"id": null, "date": date, "distance": distance, "type": type});
         xhr.send(data);
     }
 
-    function f() {
-        let personal = document.getElementsByName("personal")[0].value;
-        let work = document.getElementsByName("work")[0].value;
-        let date = document.getElementsByName("date")[0].value;
+    function f(rideType) {
+        let div = document.getElementById(rideType);
+        let date = div.getElementsByName("date")[0].value;
+        let distance = div.getElementsByName("distance")[0].value;
+        let type = rideType.charAt(0).toUpperCase() + rideType.slice(1);
 
-        if (personal) {
-            sendApiRequest(date, personal);
-        }
-
-        if (work) {
-            sendApiRequest(date, work);
-        }
+        sendApiRequest(date, distance, type);
     }
 </script>
-<label>Date<input name="date" type="date"></label><br />
-<label>Personal ride<input name="personal" type="number"></label><br />
-<label>Work ride<input name="work" type="number"></label><br />
-<button onclick="f()">Send</button>
+<div id="personal">
+    <label>Date<input name="date" type="date"></label><br />
+    <label>Personal ride<input name="distance" type="number"></label><br />
+    <button onclick="f('personal')">Send</button>
+</div>
+
+<div id="work">
+    <label>Date<input name="date" type="date"></label><br />
+    <label>Work ride<input name="distance" type="number"></label><br />
+    <button onclick="f('work')">Send</button>
+</div>
 </body>
 </html>

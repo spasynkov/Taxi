@@ -10,10 +10,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Distance {
+public class Ride {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Date date;
 	private Float distance;
+	private RideType type;
 }

@@ -2,25 +2,25 @@ package com.example.taxi.controllers;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.taxi.entities.Distance;
-import com.example.taxi.services.DistanceService;
+import com.example.taxi.entities.Ride;
+import com.example.taxi.services.RidesService;
 
 @RestController
-@RequestMapping("api/distance")
-public class DistanceController {
-	private final DistanceService service;
+@RequestMapping("api/rides")
+public class RidesController {
+	private final RidesService service;
 
-	public DistanceController(DistanceService service) {
+	public RidesController(RidesService service) {
 		this.service = service;
 	}
 
 	@GetMapping("/")
-	public Iterable<Distance> getAll() {
+	public Iterable<Ride> getAll() {
 		return service.getAll();
 	}
 
 	@PostMapping("/")
-	public Distance add(@RequestBody Distance obj) {
+	public Ride add(@RequestBody Ride obj) {
 		return service.add(obj);
 	}
 }
