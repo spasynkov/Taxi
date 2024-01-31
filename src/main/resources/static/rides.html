@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new distance</title>
+</head>
+<body onload="setDefaultDate()">
+<script>
+    function setDefaultDate() {
+        Date.prototype.toDateInputValue = (function() {
+            let local = new Date(this);
+            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+            return local.toJSON().slice(0,10);
+        });
+        document.getElementsByName("date")[0].value = new Date().toDateInputValue();
+    }
+
+
+    function sendApiRequest(date, distance) {
+        let xhr = new XMLHttpRequest();
+        let url = "/api/distance/";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+                console.log(json);
+            }
+        };
+        var data = JSON.stringify({"id": null, "date": date, "distance": distance});
+        xhr.send(data);
+    }
+
+    function f() {
+        let personal = document.getElementsByName("personal")[0].value;
+        let work = document.getElementsByName("work")[0].value;
+        let date = document.getElementsByName("date")[0].value;
+
+        if (personal) {
+            sendApiRequest(date, personal);
+        }
+
+        if (work) {
+            sendApiRequest(date, work);
+        }
+    }
+</script>
+<label>Date<input name="date" type="date"></label><br />
+<label>Personal ride<input name="personal" type="number"></label><br />
+<label>Work ride<input name="work" type="number"></label><br />
+<button onclick="f()">Send</button>
+</body>
+</html>
