@@ -1,5 +1,6 @@
 INSERT INTO refill (date, liters, price) VALUES ({ts '2023-11-24 00:00:00.00'}, 20, 1099.80);
-INSERT INTO refill (date, liters, price) VALUES ({ts '2023-11-26 00:00:00.00'}, 15, 744.45);
+INSERT INTO refill (date, liters, price, discount)
+VALUES ({ts '2023-11-26 00:00:00.00'}, 15, 824.85, 80.4);
 
 INSERT INTO ride (date, distance, type) VALUES ({ts '2023-11-25 00:00:00.00'}, 69, 1);
 INSERT INTO ride (date, distance, type) VALUES ({ts '2023-11-26 00:00:00.00'}, 79, 1);

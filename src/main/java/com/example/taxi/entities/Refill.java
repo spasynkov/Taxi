@@ -17,4 +17,5 @@ public class Refill {
 	private Date date;
 	private Byte liters;
 	private Float price;
+	private Float discount;
 }
